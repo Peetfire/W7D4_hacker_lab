@@ -5,14 +5,17 @@ const StoryList = ({stories}) => {
 
     const storyNodes = stories.map(story => {
         return(
-            <Story title={story.title} url={story.url} key={story.id}/>
+            
+            <Story title={story.title} url={story.url} author={story.by} key={story.id}/>
         )
     })
 
 
     return(
         <div>
-            {storyNodes}
+            <ol>
+                {storyNodes}
+            </ol>
         </div>
     )
 }

@@ -37,6 +37,11 @@ const StoryContainer = () =>{
     
     return(
         <>
+            <header>
+            <h1>
+                Hacker News
+            </h1>
+            </header>
             <StoryList stories = {stories}/>
         </>
     )
