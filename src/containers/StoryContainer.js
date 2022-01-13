@@ -3,12 +3,12 @@ import StoryList from '../components/StoryList';
 
 const StoryContainer = () =>{
     
-    // const [stories, setStories] = useState([]);
-    const [storyId, setStoryId] = useState([]);
+    const [stories, setStories] = useState([]);
+    const [storyIdArray, setStoryId] = useState([]);
 
-    // useEffect(() => {
-    //     getStories();
-    // }, [])
+    useEffect(() => {
+        getStories();
+    }, [])
 
     useEffect(() => {
         getStoryId();
@@ -17,9 +17,17 @@ const StoryContainer = () =>{
     const getStoryId = function(){
         fetch('https://hacker-news.firebaseio.com/v0/topstories.json')
         .then(response => response.json())
-        .then(storyId => setStoryId(storyId))
-        console.log(storyId);
+        .then(storyIdArray => setStoryId(storyIdArray))
     }
+
+    const getStories = function(){
+        const urls = storyIdArray.map(storyId => {
+            return `https://hacker-news.firebaseio.com/v0/item/${storyId}.json`
+        })
+
+        Promise.all(urls).then(url => setStories(url))
+    }
+
     
     return(
         <>
