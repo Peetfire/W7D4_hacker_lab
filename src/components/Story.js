@@ -1,7 +1,9 @@
 import react from "react";
 
 const Story = () => {
-    return()
+    return(
+        <></>
+    )
 }
 
 export default Story;

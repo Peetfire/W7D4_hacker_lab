@@ -3,8 +3,8 @@ import StoryContainer from './containers/StoryContainer';
 
 function App() {
   return (
-    <div class='story-container'>
-      {StoryContainer}
+    <div className='story-container'>
+      <StoryContainer/>
     </div>
   );
 }
