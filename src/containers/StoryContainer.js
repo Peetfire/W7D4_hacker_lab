@@ -34,15 +34,16 @@ const StoryContainer = () =>{
         
     }
 
-    
     return(
         <>
             <header>
-            <h1>
-                Hacker News
-            </h1>
+                <h1>
+                    Hacker News
+                </h1>
             </header>
-            <StoryList stories = {stories}/>
+            <div>
+                <StoryList stories = {stories}/>
+            </div>
         </>
     )
 }
