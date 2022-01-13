@@ -8,7 +8,7 @@ const StoryContainer = () =>{
 
     useEffect(() => {
         getStories();
-    }, [])
+    }, [stories])
 
     useEffect(() => {
         getStoryId();
@@ -22,16 +22,22 @@ const StoryContainer = () =>{
 
     const getStories = function(){
         const urls = storyIdArray.map(storyId => {
-            return `https://hacker-news.firebaseio.com/v0/item/${storyId}.json`
-        })
+            return `https://hacker-news.firebaseio.com/v0/item/${storyId}.json`})
 
-        Promise.all(urls).then(url => setStories(url))
+        // console.log(urls)
+
+        const promises = urls.map(url => fetch(url).then(resp => resp.json()))
+
+        Promise.all(promises).then(stories => setStories(stories))
+
+        console.log(stories)
+        
     }
 
     
     return(
         <>
-
+            <StoryList stories = {stories}/>
         </>
     )
 }
